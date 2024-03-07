@@ -4,11 +4,24 @@
   
   
   <entry>
+    <title>my new post</title>
+    <link href="/2024/03/07/my-new-post/"/>
+    <url>/2024/03/07/my-new-post/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title></title>
     <link href="/2024/01/23/test1/"/>
     <url>/2024/01/23/test1/</url>
     
-    <content type="html"><![CDATA[<hr><h2 id="title-标题tags-标签1，标签2-categories-分类-index-img-主页封面图的相对路径data-2024-1-23"><a href="#title-标题tags-标签1，标签2-categories-分类-index-img-主页封面图的相对路径data-2024-1-23" class="headerlink" title="title:标题tags:[标签1，标签2]categories:[分类]index_img:主页封面图的相对路径data:2024-1-23"></a>title:标题<br>tags:[标签1，标签2]<br>categories:[分类]<br>index_img:主页封面图的相对路径<br>data:2024-1-23</h2>]]></content>
+    <content type="html"><![CDATA[<p>title: test</p>]]></content>
     
     
     
