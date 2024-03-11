@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>c++</title>
+    <link href="/2024/03/11/c/"/>
+    <url>/2024/03/11/c/</url>
+    
+    <content type="html"><![CDATA[<p>2024年对于C++部分重点梳理记录</p><p>开始学习~</p><h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2><h3 id="常量const和constexpr"><a href="#常量const和constexpr" class="headerlink" title="常量const和constexpr"></a>常量const和constexpr</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">const</span> valuename = initvalue;<span class="hljs-comment">//声明不可修改常量存储同变量一样，但不可修改。</span><br><span class="hljs-function"><span class="hljs-keyword">constexpr</span> <span class="hljs-title">valuename</span><span class="hljs-params">()</span> </span>= &#123;<span class="hljs-keyword">return</span> valuename * <span class="hljs-number">2</span>;&#125; <span class="hljs-comment">//声明不可修改常量函数，类似函数。</span><br></code></pre></td></tr></table></figure><h3 id="枚举enum"><a href="#枚举enum" class="headerlink" title="枚举enum"></a>枚举enum</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">enum</span> <span class="hljs-title class_">CardinalDirections</span>&#123;<br>North = <span class="hljs-number">25</span>,<br>South,<br>East,<br>West<br>&#125;;<br><span class="hljs-comment">//cout&lt;&lt;South输出的值为26;</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>C++</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>C++ STL</title>
     <link href="/2024/03/07/C-STL/"/>
     <url>/2024/03/07/C-STL/</url>
