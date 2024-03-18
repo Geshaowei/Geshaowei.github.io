@@ -4,11 +4,30 @@
   
   
   <entry>
-    <title>C#重点</title>
-    <link href="/2024/03/13/C#-%E9%87%8D%E7%82%B9/"/>
-    <url>/2024/03/13/C#-%E9%87%8D%E7%82%B9/</url>
+    <title>数据结构</title>
+    <link href="/2024/03/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    <url>/2024/03/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
     
-    <content type="html"><![CDATA[<h1 id="C-重点语法"><a href="#C-重点语法" class="headerlink" title="C#重点语法"></a>C#重点语法</h1><h2 id="基础语句"><a href="#基础语句" class="headerlink" title="基础语句"></a>基础语句</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs C#">Console.WriteLine(<span class="hljs-string">&quot;Hello World!&quot;</span>);<br>Console.Write();<span class="hljs-comment">//仅打印后无换行</span><br><span class="hljs-comment">//区分大小写并且打印string 要用双引号</span><br></code></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><p>面试关于数据结构的细节题简单记录。</p><h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><p>求节点题：</p><p>1.任何一棵树，总结点树为N，除了根节点，每一个节点都有1条边。设度为0,1,2,3,4,5的节点数分别为n0,n1,n2,n3,n4,n5。</p><p>由边和节点的关系：N-1 &#x3D; 0<em>n0+1</em>n1+2<em>n2+3</em>n3+4<em>n4+5</em>n5；算出总的N &#x3D; 206。</p><p>有度的节点个数为n1+n2+n3+n4+n5 &#x3D;65。那么，叶子结点个数为n0 &#x3D; N- 65 &#x3D; 141。</p><p>2.遍历</p><p>左根右，中序</p><p>根左右，先序</p><p>左右根，后续</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>数据结构</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>C#重点</title>
+    <link href="/2024/03/13/C-%E9%87%8D%E7%82%B9/"/>
+    <url>/2024/03/13/C-%E9%87%8D%E7%82%B9/</url>
+    
+    <content type="html"><![CDATA[<h1 id="C-重点语法"><a href="#C-重点语法" class="headerlink" title="C#重点语法"></a>C#重点语法</h1><h2 id="基础语句"><a href="#基础语句" class="headerlink" title="基础语句"></a>基础语句</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs C#">Console.WriteLine(<span class="hljs-string">&quot;Hello World!&quot;</span>);<br>Console.Write();<span class="hljs-comment">//仅打印后无换行</span><br><span class="hljs-comment">//区分大小写并且打印string 要用双引号</span><br></code></pre></td></tr></table></figure><ul><li>public：所有对象都可以访问；</li><li>private：对象本身在对象内部可以访问；</li><li>protected：只有该类对象及其子类对象可以访问</li><li>internal：同一个程序集的对象可以访问；</li><li>protected internal：访问限于当前程序集或派生自包含类的类型。</li></ul><h4 id="C-while-判断"><a href="#C-while-判断" class="headerlink" title="C# while 判断()"></a>C# while 判断()</h4><p>while(n–) 非法 必须使用 while(n–!&#x3D;0)</p>]]></content>
     
     
     
