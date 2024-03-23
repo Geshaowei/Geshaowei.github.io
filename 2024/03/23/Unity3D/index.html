@@ -16,22 +16,22 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="数据结构面试关于数据结构的细节题简单记录。 树求节点题： 1.任何一棵树，总结点树为N，除了根节点，每一个节点都有1条边。设度为0,1,2,3,4,5的节点数分别为n0,n1,n2,n3,n4,n5。 由边和节点的关系：N-1 &#x3D; 0n0+1n1+2n2+3n3+4n4+5n5；算出总的N &#x3D; 206。 有度的节点个数为n1+n2+n3+n4+n5 &#x3D;65。那么，叶子">
+    <meta name="description" content="关于2D横板序列帧动画游戏开发记录，重点技术涉及：2D精灵图片切割，Animation序列帧动画生成，Animator动画管理。基础UI设计，事件绑定，键盘事件监听，刚体组件加碰撞体触发器的使用。 2D横板+像素+动作+闯关游戏设计免费素材使用，重点使用2D序列帧动画 精灵图片切割要点图片像素需要根据原始像素进行切割，注意质量要原版质量. 键盘监听事件inputsystem的使用以及跳跃事件和键盘">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据结构">
-<meta property="og:url" content="http://example.com/2024/03/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:title" content="Unity3D">
+<meta property="og:url" content="http://example.com/2024/03/23/Unity3D/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="数据结构面试关于数据结构的细节题简单记录。 树求节点题： 1.任何一棵树，总结点树为N，除了根节点，每一个节点都有1条边。设度为0,1,2,3,4,5的节点数分别为n0,n1,n2,n3,n4,n5。 由边和节点的关系：N-1 &#x3D; 0n0+1n1+2n2+3n3+4n4+5n5；算出总的N &#x3D; 206。 有度的节点个数为n1+n2+n3+n4+n5 &#x3D;65。那么，叶子">
+<meta property="og:description" content="关于2D横板序列帧动画游戏开发记录，重点技术涉及：2D精灵图片切割，Animation序列帧动画生成，Animator动画管理。基础UI设计，事件绑定，键盘事件监听，刚体组件加碰撞体触发器的使用。 2D横板+像素+动作+闯关游戏设计免费素材使用，重点使用2D序列帧动画 精灵图片切割要点图片像素需要根据原始像素进行切割，注意质量要原版质量. 键盘监听事件inputsystem的使用以及跳跃事件和键盘">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-03-16T09:07:28.000Z">
-<meta property="article:modified_time" content="2024-03-16T09:17:30.145Z">
+<meta property="article:published_time" content="2024-03-23T05:42:47.000Z">
+<meta property="article:modified_time" content="2024-03-23T05:57:19.045Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="2D游戏开发">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>数据结构 - Hexo</title>
+  <title>Unity3D - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="数据结构"></span>
+            <span id="subtitle" data-typed-text="Unity3D"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-03-16 17:07" pubdate>
-          2024年3月16日 下午
+        <time datetime="2024-03-23 13:42" pubdate>
+          2024年3月23日 下午
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          145 字
+          576 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          2 分钟
+          5 分钟
         
       </span>
     
@@ -268,20 +268,22 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">数据结构</h1>
+            <h1 id="seo-header">Unity3D</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><p>面试关于数据结构的细节题简单记录。</p>
-<h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><p>求节点题：</p>
-<p>1.任何一棵树，总结点树为N，除了根节点，每一个节点都有1条边。设度为0,1,2,3,4,5的节点数分别为n0,n1,n2,n3,n4,n5。</p>
-<p>由边和节点的关系：N-1 &#x3D; 0<em>n0+1</em>n1+2<em>n2+3</em>n3+4<em>n4+5</em>n5；算出总的N &#x3D; 206。</p>
-<p>有度的节点个数为n1+n2+n3+n4+n5 &#x3D;65。那么，叶子结点个数为n0 &#x3D; N- 65 &#x3D; 141。</p>
-<p>2.遍历</p>
-<p>左根右，中序</p>
-<p>根左右，先序</p>
-<p>左右根，后续</p>
+                <p>关于2D横板序列帧动画游戏开发记录，重点技术涉及：2D精灵图片切割，Animation序列帧动画生成，Animator动画管理。基础UI设计，事件绑定，键盘事件监听，刚体组件加碰撞体触发器的使用。</p>
+<h1 id="2D横板-像素-动作-闯关游戏设计"><a href="#2D横板-像素-动作-闯关游戏设计" class="headerlink" title="2D横板+像素+动作+闯关游戏设计"></a>2D横板+像素+动作+闯关游戏设计</h1><p>免费素材使用，重点使用2D序列帧动画</p>
+<h2 id="精灵图片切割要点"><a href="#精灵图片切割要点" class="headerlink" title="精灵图片切割要点"></a>精灵图片切割要点</h2><p>图片像素需要根据原始像素进行切割，注意质量要原版质量.</p>
+<h2 id="键盘监听事件"><a href="#键盘监听事件" class="headerlink" title="键盘监听事件"></a>键盘监听事件</h2><p>inputsystem的使用以及跳跃事件和键盘使用的绑定。</p>
+<h3 id="Animation动画制作"><a href="#Animation动画制作" class="headerlink" title="Animation动画制作"></a>Animation动画制作</h3><p>首先创造Animator 进行动画管理，然后找到Animation动画制作pattle，根据面板进行创建，要点在于每秒多少帧，调节这个可以帮助动画的流畅度设计。</p>
+<h3 id="Animator动画切换管理"><a href="#Animator动画切换管理" class="headerlink" title="Animator动画切换管理"></a>Animator动画切换管理</h3><p>Animator是动画的逻辑切换判断，在2D像素风格中，首先要做的就是把切换的等待设置为0，不适用动画切换等待，之后的就是设计每个动画的切换逻辑，特殊的在于触发器的使用，触发器是触发一次变转化一次动作。</p>
+<p>还有一个要点是动画管理的脚本尽量单独使用，方便管理。</p>
+<p>动画还可以设置多个管理层，有覆盖和优先级的设定，下面的weight要调整至1，防止被覆盖。《跳跃+攻击不在一个面板的话需要这样设置，以免不会同时调用》</p>
+<h4 id="事件的绑定-UnityEvent"><a href="#事件的绑定-UnityEvent" class="headerlink" title="事件的绑定 UnityEvent"></a>事件的绑定 UnityEvent</h4><p>Unity 自带了一套事件绑定方法，使用UnityEvent头文件，生成的事件为Public，可以直接在Unity编辑器中进行拖拽绑定，然后使用.来进行调用这一系列事件，事件可以由多个方法组成，可以传入参数，使用的时候利用? 来检查时候有绑定的方法，以免报错。</p>
+<h5 id="Rigbody2D-Collision-刚体加碰撞体"><a href="#Rigbody2D-Collision-刚体加碰撞体" class="headerlink" title="Rigbody2D+Collision 刚体加碰撞体"></a>Rigbody2D+Collision 刚体加碰撞体</h5><p>刚体组件使得物体有了物理性质，碰撞体使得物体有了可以碰撞的条件。碰撞体可以点击Is Trigger 选项，使之成为触发器，这样可以用于检测碰撞或者接触到一定范围的物体。</p>
+<h6 id="UI设计"><a href="#UI设计" class="headerlink" title="UI设计"></a>UI设计</h6><p>锚点的绑定。</p>
 
                 
               </div>
@@ -294,7 +296,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="print-no-link">#数据结构</a>
+        <a href="/tags/2D%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" class="print-no-link">#2D游戏开发</a>
       
     </div>
   
@@ -306,8 +308,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>数据结构</div>
-      <div>http://example.com/2024/03/16/数据结构/</div>
+      <div>Unity3D</div>
+      <div>http://example.com/2024/03/23/Unity3D/</div>
     </div>
     <div class="license-meta">
       
@@ -319,7 +321,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年3月16日</div>
+          <div>2024年3月23日</div>
         </div>
       
       
@@ -351,18 +353,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/03/23/Unity3D/" title="Unity3D">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Unity3D</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/03/13/C-%E9%87%8D%E7%82%B9/" title="C#重点">
-                        <span class="hidden-mobile">C#重点</span>
+                      <a href="/2024/03/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">
+                        <span class="hidden-mobile">数据结构</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
