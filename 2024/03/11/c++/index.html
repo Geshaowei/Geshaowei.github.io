@@ -24,7 +24,7 @@
 <meta property="og:description" content="2024年对于C++部分重点梳理记录 开始学习~ C++常量const和constexpr12const valuename &#x3D; initvalue;&#x2F;&#x2F;声明不可修改常量存储同变量一样，但不可修改。constexpr valuename() &#x3D; &#123;return valuename * 2;&#125; &#x2F;&#x2F;声明不可修改常量函数，类似函数。  枚举enum1234567enum Cardi">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-11T06:29:16.000Z">
-<meta property="article:modified_time" content="2024-03-11T06:38:51.452Z">
+<meta property="article:modified_time" content="2024-04-13T13:32:05.484Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary_large_image">
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          80 字
+          154 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          1 分钟
+          2 分钟
         
       </span>
     
@@ -278,6 +278,8 @@
 <h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2><h3 id="常量const和constexpr"><a href="#常量const和constexpr" class="headerlink" title="常量const和constexpr"></a>常量const和constexpr</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">const</span> valuename = initvalue;<span class="hljs-comment">//声明不可修改常量存储同变量一样，但不可修改。</span><br><span class="hljs-function"><span class="hljs-keyword">constexpr</span> <span class="hljs-title">valuename</span><span class="hljs-params">()</span> </span>= &#123;<span class="hljs-keyword">return</span> valuename * <span class="hljs-number">2</span>;&#125; <span class="hljs-comment">//声明不可修改常量函数，类似函数。</span><br></code></pre></td></tr></table></figure>
 
 <h3 id="枚举enum"><a href="#枚举enum" class="headerlink" title="枚举enum"></a>枚举enum</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">enum</span> <span class="hljs-title class_">CardinalDirections</span>&#123;<br>	North = <span class="hljs-number">25</span>,<br>	South,<br>	East,<br>	West<br>&#125;;<br><span class="hljs-comment">//cout&lt;&lt;South输出的值为26;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="C-左值-右值引用"><a href="#C-左值-右值引用" class="headerlink" title="C++左值&#x2F;右值引用"></a>C++左值&#x2F;右值引用</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br><span class="hljs-type">int</span> a = <span class="hljs-number">1</span>; <span class="hljs-comment">//a 是作，1是右值</span><br><span class="hljs-type">int</span>&amp;&amp; b  = <span class="hljs-number">1</span> ;<span class="hljs-comment">// 右值引用</span><br><span class="hljs-type">int</span>&amp; c = <span class="hljs-number">1</span>; <span class="hljs-comment">//左值引用</span><br><span class="hljs-type">const</span> <span class="hljs-type">int</span>&amp; d = <span class="hljs-number">1</span> ; <span class="hljs-comment">//万能引用</span><br><span class="hljs-comment">//左值，不会因为运算后而消亡，有存储地址。 右值，临时常量。</span><br>&#125;<br><br></code></pre></td></tr></table></figure>
 
                 
               </div>
