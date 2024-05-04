@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>git-study</title>
+    <link href="/2024/05/04/git-study/"/>
+    <url>/2024/05/04/git-study/</url>
+    
+    <content type="html"><![CDATA[<p>git add .  &#x2F;&#x2F;增加 缓存</p><p>git commit -m “”提交本地仓库</p><p>git push origin mian &#x2F;&#x2F;提交原始仓库&#x2F;&#x2F;远程提交 mian分支。</p><p>git merge testbranch 合并分支到当前分支。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>github</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>C++Primer</title>
     <link href="/2024/04/26/C-Primer/"/>
     <url>/2024/04/26/C-Primer/</url>
