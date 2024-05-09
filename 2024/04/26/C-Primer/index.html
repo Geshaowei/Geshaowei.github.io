@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/image/C-Primer/1714813712165.png">
 <meta property="article:published_time" content="2024-04-26T13:06:39.000Z">
-<meta property="article:modified_time" content="2024-05-06T12:19:39.910Z">
+<meta property="article:modified_time" content="2024-05-09T14:44:15.311Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary_large_image">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.3k 字
+          3.6k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          28 分钟
+          30 分钟
         
       </span>
     
@@ -408,8 +408,22 @@
 
 <p>之后就可以这样打印类 Time : cout&lt;&lt; t; 因为 hours 和minutes是私有的，因此需要将其设置Time的友元函数。</p>
 <p>对于重载运算符，优先使用成员函数，其次再用友元。</p>
-<h3 id="类的自动转换和强制转换"><a href="#类的自动转换和强制转换" class="headerlink" title="类的自动转换和强制转换"></a>类的自动转换和强制转换</h3><p>如果一个类的构造函数只有一个参数，那么 &#x3D; 可以将等式右边的值隐士转换为对象的值。即使用构造函数构造一个临时对象并且赋值给她</p>
+<h3 id="类的自动转换和强制转换"><a href="#类的自动转换和强制转换" class="headerlink" title="类的自动转换和强制转换"></a>类的自动转换和强制转换</h3><p>如果一个类的构造函数只有一个参数，那么 &#x3D; 可以将等式右边的值隐士转换为对象的值。即使用构造函数构造一个临时对象并且赋值给它。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">stone</span>&#123;<br><span class="hljs-type">int</span> weight;<br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-built_in">stone</span>(<span class="hljs-type">int</span> nvalue)&#123;weight = nvalue;&#125;<br>&#125;<br>stone A;<br>A = <span class="hljs-number">3</span>;<span class="hljs-comment">//临时构造一个int为3的stone对象，然后赋值给A；</span><br><span class="hljs-keyword">explicit</span> 如果夹在stone构造前，就可以关闭这种特性。<br>使其只可以显示转换，不能隐式转换。<span class="hljs-comment">//只有一个参数或者后面参数有默认值才可以隐式转换。</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="类和动态内存分配"><a href="#类和动态内存分配" class="headerlink" title="类和动态内存分配"></a>类和动态内存分配</h2><p>12.1.2特殊成员函数</p>
+<ol>
+<li>默认构造函数，如果没有定义构造函数</li>
+<li>默认析构函数，如果没有定义</li>
+<li>复制构造函数，如果没有定义</li>
+<li>赋值运算符，如果没有定义；</li>
+<li>地址运算符，如果没有定义</li>
+</ol>
+<p>复制构造函数：将一个对象复制到新创建的对象。也用于按值传递参数。StringBad(const String &amp;s)&#x2F;&#x2F;复制构造函数的默认形式。默认总是出现浅复制。如果有new的对象则可能会出现两个对象指向同内存空间，导致析构出错。</p>
+<p>&#x2F;&#x2F;在实际使用中，所有初始化赋值的对象都调用的是复制构造函数。只有在初始化之后的 &#x3D; 运算符才是赋值构造函数。</p>
+<p>赋值运算符：使用&#x3D;的时候就有可能调用赋值运算符。</p>
+<p>重载： StringBad &amp; StringBad::operator&#x3D;(const StringBad &amp; st);</p>
+<p>在类中使用new构造时要统一new的使用，并且定义复制构造函数、定义赋值运算符。使得其进行深复制，而不是只复制指针地址。</p>
 
                 
               </div>
