@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/image/C-Primer/1714813712165.png">
 <meta property="article:published_time" content="2024-04-26T13:06:39.000Z">
-<meta property="article:modified_time" content="2024-05-09T14:44:15.311Z">
+<meta property="article:modified_time" content="2024-05-13T06:40:52.155Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary_large_image">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.6k 字
+          4.3k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          30 分钟
+          36 分钟
         
       </span>
     
@@ -424,6 +424,28 @@
 <p>赋值运算符：使用&#x3D;的时候就有可能调用赋值运算符。</p>
 <p>重载： StringBad &amp; StringBad::operator&#x3D;(const StringBad &amp; st);</p>
 <p>在类中使用new构造时要统一new的使用，并且定义复制构造函数、定义赋值运算符。使得其进行深复制，而不是只复制指针地址。</p>
+<h2 id="Chapter13类继承"><a href="#Chapter13类继承" class="headerlink" title="Chapter13类继承"></a>Chapter13类继承</h2><h3 id="虚函数-virtual"><a href="#虚函数-virtual" class="headerlink" title="虚函数 virtual"></a>虚函数 virtual</h3><p>C++默认编译为静态联编。如果类不会用作基类，则不需要动态联编，同样，如果派生类不重新定义基类的任何方法，也不需要使用动态联编。静态的效率更高。</p>
+<p>C++指导原则之一：不要为不使用的特性付出代价（内存或者处理时间）。</p>
+<p>通常编译器处理虚函数的方法是：给每个对象添加一个隐藏成员。隐藏成员中报存了一个指向函数地址数组的指针。这种数组被成为虚函数表。表中存储了为类对象进行声明的虚函数的地址。</p>
+<p>友元：在派生类函数中的同名友元中，强制转换为基类，在用基类的运算符。</p>
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p>无论在派生类的构造函数中是否显示使用基类的构造函数，派生类的构造函数都会默认先调用基类的构造函数，后调用自身的构造函数。</p>
+<h3 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a>析构函数</h3><p>析构函数的调用顺序相反，默认调用派生类的析构后再调用基类的析构。且调用顺序从最近使用到最远使用。（默认情况）；</p>
+<h3 id="友元函数"><a href="#友元函数" class="headerlink" title="友元函数"></a>友元函数</h3><p>在派生类中可以使用基类的友元函数，常见的是&lt;&lt;运算符，可以使用显示强制转换，将派生类转化为基类，在用 os&lt;&lt;base(baseplus);</p>
+<h3 id="new运算符的使用一定注意"><a href="#new运算符的使用一定注意" class="headerlink" title="new运算符的使用一定注意"></a>new运算符的使用一定注意</h3><p>如果在构造函数中使用了 new</p>
+<p>则析构一定要delete ，并且要对赋值，复制函数重写：operator&#x3D; ,和classname(const classname &amp; cn);</p>
+<h2 id="Chapter14-使用类"><a href="#Chapter14-使用类" class="headerlink" title="Chapter14 使用类"></a>Chapter14 使用类</h2><p>继承，默认私有继承。 class A：B，私有继承，class A：public B。共有。 私有成员只能类中成员函数访问。</p>
+<h3 id="类模板"><a href="#类模板" class="headerlink" title="类模板"></a>类模板</h3><p>tamplate <code>&lt;class T&gt;</code></p>
+<p>class A</p>
+<p>{</p>
+<p>};</p>
+<p>使用 ，STL中的vector 等容器就是模板类，可以通过&lt;&gt;确定模板类型。同时里面的函数也要用模板函数。</p>
+<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><p>dynamic_cast , const_cast static_cast,类型转换比普通类型转换更安全。</p>
+<h2 id="Chapter15友元异常和其他"><a href="#Chapter15友元异常和其他" class="headerlink" title="Chapter15友元异常和其他"></a>Chapter15友元异常和其他</h2><h3 id="Chapter16"><a href="#Chapter16" class="headerlink" title="Chapter16"></a>Chapter16</h3><p>智能指针</p>
+<p>auto_ptr, unique_ptr,shared_ptr.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp">unique_ptr&lt;<span class="hljs-type">int</span>&gt;<span class="hljs-built_in">pup</span>(<span class="hljs-keyword">new</span> <span class="hljs-type">int</span>)<br><span class="hljs-function">auto_ptr&lt;string&gt; <span class="hljs-title">str</span><span class="hljs-params">(<span class="hljs-keyword">new</span> string <span class="hljs-string">&quot;Hello&quot;</span>)</span></span>;<br>shared_ptr&lt;string&gt; stp3;<br>stp3 = stp2;<br>stp3 = <span class="hljs-built_in">shared_ptr</span>&lt;string&gt;(<span class="hljs-keyword">new</span> string <span class="hljs-string">&quot;ss&quot;</span>)<br><span class="hljs-comment">//智能指针的设计就是为了防止程序员遗忘指针对new 出的匿名变量 忘记delete。</span><br><br></code></pre></td></tr></table></figure>
+
+<p>unique_ptr 和 auto_ptr 都是建立所有权概念，即只能有一个指针持有内存所有权。但是unique_ptr 会在编译阶段就提醒错误，提示语法错误，这是安全于auto_ptr的，并且 unique_ptr 有 new[] 和 delete[] 的配对情况，auto_ptr只有new delete 的情况。</p>
+<p>shared_ptr采用引用计数策略，仅当被被指向对象的引用次数为0时，才会消除对象。</p>
 
                 
               </div>
