@@ -4,11 +4,24 @@
   
   
   <entry>
+    <title>linux</title>
+    <link href="/2024/05/20/linux/"/>
+    <url>/2024/05/20/linux/</url>
+    
+    <content type="html"><![CDATA[<h2 id="mysql-相关"><a href="#mysql-相关" class="headerlink" title="mysql 相关"></a>mysql 相关</h2><p>Ubuntu删除 重装 mysql</p><p><a href="https://geek-docs.com/mysql/mysql-ask-answer/1625_mysql_ubuntu_mysql_uninstall_reinstall.html">https://geek-docs.com/mysql/mysql-ask-answer/1625_mysql_ubuntu_mysql_uninstall_reinstall.html</a></p><p>初始密码修改</p><p><a href="https://blog.csdn.net/qq_26164609/article/details/106881079">https://blog.csdn.net/qq_26164609/article/details/106881079</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>面试经验</title>
     <link href="/2024/05/15/%E9%9D%A2%E8%AF%95%E7%BB%8F%E9%AA%8C/"/>
     <url>/2024/05/15/%E9%9D%A2%E8%AF%95%E7%BB%8F%E9%AA%8C/</url>
     
-    <content type="html"><![CDATA[<h1 id="实践面试经验"><a href="#实践面试经验" class="headerlink" title="实践面试经验"></a>实践面试经验</h1><p>记录自己春招暑假实习和秋招细节的面试经验。</p><h2 id="腾讯天美"><a href="#腾讯天美" class="headerlink" title="腾讯天美"></a>腾讯天美</h2><p>C++基础掌握太差，模板编程不了解。</p><p>TCP UDP</p><p>缺少项目开发经验。</p><h2 id="腾讯光子"><a href="#腾讯光子" class="headerlink" title="腾讯光子"></a>腾讯光子</h2><p>C++基础还行，但是在继承多态中的隐藏理解不深入，以及类的构造函数析构函数不细节。</p><p>面试官：更考察C++或者C#的基础能力。</p><h2 id="游卡-u3d客户端开发"><a href="#游卡-u3d客户端开发" class="headerlink" title="游卡 u3d客户端开发"></a>游卡 u3d客户端开发</h2><p>项目的细节，难点，以及带来的提升。</p><p>class 和 struct的区别。 </p><p>性能优化相关 &#x2F;&#x2F; 说了手动GC，对象池。</p><p>了解粘包吗？ &#x2F;&#x2F;不会。</p><p>细说用到的设计模式，解耦合的使用。</p><p>细说项目对自己学习能力的提升。</p><p>面试官大哥：</p><p>游戏分为，业务逻辑和UI方面，主要就是对整体的架构设计，流程的把控，逻辑的设计。以及UI。</p><p>之后分为性能优化方面以及渲染模块。</p><p>实习生分为研究型，做一些小课题的研究以及做一些项目中的不重要的板块内容。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="实践面试经验"><a href="#实践面试经验" class="headerlink" title="实践面试经验"></a>实践面试经验</h1><p>记录自己春招暑假实习和秋招细节的面试经验。</p><h2 id="腾讯天美"><a href="#腾讯天美" class="headerlink" title="腾讯天美"></a>腾讯天美</h2><p>C++基础掌握太差，模板编程不了解。</p><p>TCP UDP</p><p>缺少项目开发经验。</p><h2 id="腾讯光子"><a href="#腾讯光子" class="headerlink" title="腾讯光子"></a>腾讯光子</h2><p>C++基础还行，但是在继承多态中的隐藏理解不深入，以及类的构造函数析构函数不细节。</p><p>面试官：更考察C++或者C#的基础能力。</p><h2 id="游卡-u3d客户端开发"><a href="#游卡-u3d客户端开发" class="headerlink" title="游卡 u3d客户端开发"></a>游卡 u3d客户端开发</h2><p>项目的细节，难点，以及带来的提升。</p><p>class 和 struct的区别。 </p><p>性能优化相关 &#x2F;&#x2F; 说了手动GC，对象池。</p><p>了解粘包吗？ &#x2F;&#x2F;不会。</p><p>细说用到的设计模式，解耦合的使用。</p><p>细说项目对自己学习能力的提升。</p><p>面试官大哥：</p><p>游戏分为，业务逻辑和UI方面，主要就是对整体的架构设计，流程的把控，逻辑的设计。以及UI。</p><p>之后分为性能优化方面以及渲染模块。</p><p>实习生分为研究型，做一些小课题的研究以及做一些项目中实习生可以做的板块内容。</p><p>收获满满，感谢面试官大哥的回答，在提问中也了解到了自己的不足，以后确实要在U3d的技术上多一些提升。</p>]]></content>
     
     
     
