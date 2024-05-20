@@ -16,15 +16,15 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="mysql 相关Ubuntu删除 重装 mysql https:&#x2F;&#x2F;geek-docs.com&#x2F;mysql&#x2F;mysql-ask-answer&#x2F;1625_mysql_ubuntu_mysql_uninstall_reinstall.html 初始密码修改 https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_26164609&#x2F;article&#x2F;details&#x2F;106881079">
+    <meta name="description" content="mysql 相关Ubuntu删除 重装 mysql https:&#x2F;&#x2F;geek-docs.com&#x2F;mysql&#x2F;mysql-ask-answer&#x2F;1625_mysql_ubuntu_mysql_uninstall_reinstall.html 初始密码修改 https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_26164609&#x2F;article&#x2F;details&#x2F;106881079 安装C API MYsql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux">
 <meta property="og:url" content="http://example.com/2024/05/20/linux/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="mysql 相关Ubuntu删除 重装 mysql https:&#x2F;&#x2F;geek-docs.com&#x2F;mysql&#x2F;mysql-ask-answer&#x2F;1625_mysql_ubuntu_mysql_uninstall_reinstall.html 初始密码修改 https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_26164609&#x2F;article&#x2F;details&#x2F;106881079">
+<meta property="og:description" content="mysql 相关Ubuntu删除 重装 mysql https:&#x2F;&#x2F;geek-docs.com&#x2F;mysql&#x2F;mysql-ask-answer&#x2F;1625_mysql_ubuntu_mysql_uninstall_reinstall.html 初始密码修改 https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_26164609&#x2F;article&#x2F;details&#x2F;106881079 安装C API MYsql">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-20T09:07:29.000Z">
-<meta property="article:modified_time" content="2024-05-20T09:13:02.072Z">
+<meta property="article:modified_time" content="2024-05-20T10:46:18.708Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          29 字
+          122 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          1 分钟
+          2 分钟
         
       </span>
     
@@ -276,6 +276,23 @@
 <p><a target="_blank" rel="noopener" href="https://geek-docs.com/mysql/mysql-ask-answer/1625_mysql_ubuntu_mysql_uninstall_reinstall.html">https://geek-docs.com/mysql/mysql-ask-answer/1625_mysql_ubuntu_mysql_uninstall_reinstall.html</a></p>
 <p>初始密码修改</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_26164609/article/details/106881079">https://blog.csdn.net/qq_26164609/article/details/106881079</a></p>
+<p>安装C API MYsql：针对找不到mysql.h头文件</p>
+<p>sudo apt-get install libmysqlclient-dev</p>
+<h2 id="文件相关"><a href="#文件相关" class="headerlink" title="文件相关"></a>文件相关</h2><p>1.强制删除文件夹并提示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">rm</span> -r 文件名<br>1<br></code></pre></td></tr></table></figure>
+
+<p>例如:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stata">sudo <span class="hljs-keyword">rm</span> -r  /usr/<span class="hljs-keyword">local</span>/<span class="hljs-keyword">include</span>/opencv<br>1<br></code></pre></td></tr></table></figure>
+
+<p>2.强制删除文件夹并不提示</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp">sudo rm -rf 文件名<br><span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<p>3.删除文件</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">sudo rm -f 文件名<br></code></pre></td></tr></table></figure>
+
+<h2 id="MyTinyServer"><a href="#MyTinyServer" class="headerlink" title="MyTinyServer"></a>MyTinyServer</h2><p>项目链接<a target="_blank" rel="noopener" href="https://github.com/qinguoyi/TinyWebServer">MyTinyServer</a></p>
+<p>问题注意：mysql.h注意是否配置成功</p>
+<p>测试环境：WSL下的Ubuntu2004，mysql 8.0。</p>
 
                 
               </div>
