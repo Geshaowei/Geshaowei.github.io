@@ -1,0 +1,776 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="xLua教程Lua文件加载一、执行字符串 最基本是直接用LuaEnv.DoString执行一个字符串，当然，字符串得符合Lua语法 比如： 1luaenv.DoString(&quot;print(&#x27;hello world&#x27;)&quot;)  完整代码见XLua\Tutorial\LoadLuaScript\ByString目录 但这种方式并不建议，更建议下面介绍这种方法。 二">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xlua-study">
+<meta property="og:url" content="http://example.com/2024/05/22/xlua-study/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="xLua教程Lua文件加载一、执行字符串 最基本是直接用LuaEnv.DoString执行一个字符串，当然，字符串得符合Lua语法 比如： 1luaenv.DoString(&quot;print(&#x27;hello world&#x27;)&quot;)  完整代码见XLua\Tutorial\LoadLuaScript\ByString目录 但这种方式并不建议，更建议下面介绍这种方法。 二">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-05-22T03:51:39.000Z">
+<meta property="article:modified_time" content="2024-05-22T03:55:07.802Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="xlua">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>xlua-study - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="xlua-study"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-22 11:51" pubdate>
+          2024年5月22日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          25 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">xlua-study</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="xLua教程"><a href="#xLua教程" class="headerlink" title="xLua教程"></a>xLua教程</h1><h1 id="Lua文件加载"><a href="#Lua文件加载" class="headerlink" title="Lua文件加载"></a>Lua文件加载</h1><p><strong>一、执行字符串</strong></p>
+<p>最基本是直接用LuaEnv.DoString执行一个字符串，当然，字符串得符合Lua语法</p>
+<p>比如：</p>
+<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vbscript">luaenv.<span class="hljs-keyword">Do</span><span class="hljs-built_in">String</span>(<span class="hljs-string">&quot;print(&#x27;hello world&#x27;)&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>完整代码见XLua\Tutorial\LoadLuaScript\ByString目录</p>
+<p>但这种方式并不建议，更建议下面介绍这种方法。</p>
+<p><strong>二、加载Lua****文件</strong></p>
+<p>用lua的require函数即可</p>
+<p>比如：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">DoString</span><span class="hljs-params">(<span class="hljs-string">&quot;require &#x27;byfile&#x27;&quot;</span>)</span></span><br></code></pre></td></tr></table></figure>
+
+<p>完整代码见XLua\Tutorial\LoadLuaScript\ByFile目录</p>
+<p>require实际上是调一个个的loader去加载，有一个成功就不再往下尝试，全失败则报文件找不到。</p>
+<p>目前xLua除了原生的loader外，还添加了从Resource加载的loader，需要注意的是因为Resource只支持有限的后缀，放Resources下的lua文件得加上txt后缀（见附带的例子）。</p>
+<p>建议的加载Lua脚本方式是：整个程序就一个DoString(“require ‘main’”)，然后在main.lua加载其它脚本（类似lua脚本的命令行执行：lua main.lua）。</p>
+<p>有童鞋会问：要是我的Lua文件是下载回来的，或者某个自定义的文件格式里头解压出来，或者需要解密等等，怎么办？问得好，xLua的自定义Loader可以满足这些需求。</p>
+<p><strong>三、自定义Loader</strong></p>
+<p>在xLua加自定义loader是很简单的，只涉及到一个接口：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs Csharp"><span class="hljs-function">publicdelegatebyte[] <span class="hljs-title">CustomLoader</span>(<span class="hljs-params">refstring filepath</span>)</span>;<br>publicvoidLuaEnv.AddLoader(CustomLoader loader)<br></code></pre></td></tr></table></figure>
+
+
+<p>通过AddLoader可以注册个回调，该回调参数是字符串，lua代码里头调用require时，参数将会透传给回调，回调中就可以根据这个参数去加载指定文件，如果需要支持调试，需要把filepath修改为真实路径传出。该回调返回值是一个byte数组，如果为空表示该loader找不到，否则则为lua文件的内容。</p>
+<p>有了这个就简单了，用IIPS的IFS？没问题。写个loader调用IIPS的接口读文件内容即可。文件已经加密？没问题，自己写loader读取文件解密后返回即可。。。</p>
+<p>完整示例见XLua\Tutorial\LoadLuaScript\Loader</p>
+<h1 id="C-访问Lua"><a href="#C-访问Lua" class="headerlink" title="C#访问Lua"></a>C#访问Lua</h1><p>这里指的是C#主动发起对Lua数据结构的访问。</p>
+<p>本章涉及到的例子都可以在XLua\Tutorial\CSharpCallLua下找到。</p>
+<p><strong>一、获取一个全局基本数据类型</strong></p>
+<p>访问LuaEnv.Global就可以了，上面有个模版Get方法，可指定返回的类型。</p>
+<p>luaenv.Global.Get<code>&lt;int&gt;</code>(“a”)</p>
+<p>luaenv.Global.Get<code>&lt;string&gt;</code>(“b”)</p>
+<p>luaenv.Global.Get <code>&lt;bool&gt;</code>(“c”)  </p>
+<p><strong>二、访问一个全局的table</strong></p>
+<p>也是用上面的Get方法，那类型要指定成啥呢？</p>
+<p>1、映射到普通class或struct</p>
+<p>定义一个class，有对应于table的字段的public属性，而且有无参数构造函数即可，比如对于{f1 &#x3D; 100, f2 &#x3D;<br>100}可以定义一个包含public<br>int f1;public int f2;的class。</p>
+<p>这种方式下xLua会帮你new一个实例，并把对应的字段赋值过去。 &#x2F;&#x2F;访问的时候名字要一样，区分大小写</p>
+<p>table的属性可以多于或者少于class的属性。可以嵌套其它复杂类型。</p>
+<p>要注意的是，这个过程是值拷贝，如果class比较复杂代价会比较大。而且修改class的字段值不会同步到table，反过来也不会。</p>
+<p>这个功能可以通过把类型加到GCOptimize生成降低开销，详细可参见配置介绍文档。</p>
+<p>那有没有引用方式的映射呢？有，下面这个就是：</p>
+<p>2、映射到一个interface</p>
+<p>这种方式依赖于生成代码（如果没生成代码会抛InvalidCastException异常），代码生成器会生成这个interface的实例，如果get一个属性，生成代码会get对应的table字段，如果set属性也会设置对应的字段。甚至可以通过interface的方法访问lua的函数。</p>
+<p>3、更轻量级的by value方式：映射到Dictionary&lt;&gt;，List&lt;&gt;</p>
+<p>不想定义class或者interface的话，可以考虑用这个，前提table下key和value的类型都是一致的。</p>
+<p>4、另外一种by ref方式：映射到LuaTable类</p>
+<p>这种方式好处是不需要生成代码，但也有一些问题，比如慢，比方式2要慢一个数量级，比如没有类型检查。</p>
+<p><strong>三、访问一个全局的function</strong></p>
+<p>仍然是用Get方法，不同的是类型映射。</p>
+<p>1、映射到delegate</p>
+<p>这种是建议的方式，性能好很多，而且类型安全。缺点是要生成代码（如果没生成代码会抛InvalidCastException异常）。</p>
+<p>delegate要怎样声明呢？</p>
+<p>对于function的每个参数就声明一个输入类型的参数。</p>
+<p>多返回值要怎么处理？从左往右映射到c#的输出参数，输出参数包括返回值，out参数，ref参数。</p>
+<p>参数、返回值类型支持哪些呢？都支持，各种复杂类型，out，ref修饰的，甚至可以返回另外一个delegate。</p>
+<p>delegate的使用就更简单了，直接像个函数那样用就可以了。</p>
+<p>2、映射到LuaFunction</p>
+<p>这种方式的优缺点刚好和第一种相反。</p>
+<p>使用也简单，LuaFunction上有个变参的Call函数，可以传任意类型，任意个数的参数，返回值是object的数组，对应于lua的多返回值。</p>
+<p><strong>四、使用建议</strong></p>
+<p>1、访问lua全局数据，特别是table以及function，代价比较大，建议尽量少做，比如在初始化时把要调用的lua<br>function获取一次（映射到delegate）后，保存下来，后续直接调用该delegate即可。table也类似。</p>
+<p>2、如果lua测的实现的部分都以delegate和interface的方式提供，使用方可以完全和xLua解耦：由一个专门的模块负责xlua的初始化以及delegate、interface的映射，然后把这些delegate和interface设置到要用到它们的地方。</p>
+<h1 id="Lua调用C"><a href="#Lua调用C" class="headerlink" title="Lua调用C#"></a>Lua调用C#</h1><p>本章节涉及到的实例均在XLua\Tutorial\LuaCallCSharp下</p>
+<p> <strong>new C#</strong> <strong>对象</strong></p>
+<p>你在C#这样new一个对象：</p>
+<p>var newGameObj &#x3D; new UnityEngine.GameObject();</p>
+<p>对应到Lua是这样：</p>
+<p>local newGameObj &#x3D; CS.UnityEngine.GameObject()</p>
+<p>基本类似，除了：</p>
+<p>1、lua里头没有new关键字；</p>
+<p>2、所有C#相关的都放到CS下，包括构造函数，静态成员属性、方法；</p>
+<p>如果有多个构造函数呢？放心，xlua支持重载，比如你要调用GameObject的带一个string参数的构造函数，这么写：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs haxe">local <span class="hljs-keyword">new</span><span class="hljs-type">GameObj2</span> = CS.UnityEngine.GameObject(<span class="hljs-string">&#x27;helloworld&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p> <strong>访问C#</strong> <strong>静态属性，方法</strong></p>
+<p>读静态属性</p>
+<p>CS.UnityEngine.Time.deltaTime</p>
+<p>写静态属性</p>
+<p>CS.UnityEngine.Time.timeScale &#x3D; 0.5</p>
+<p>调用静态方法</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">CS<span class="hljs-selector-class">.UnityEngine</span><span class="hljs-selector-class">.GameObject</span><span class="hljs-selector-class">.Find</span>(<span class="hljs-string">&#x27;helloworld&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>小技巧：如果需要经常访问的类，可以先用局部变量引用后访问，除了减少敲代码的时间，还能提高性能：</p>
+<p>local GameObject &#x3D; CS.UnityEngine.GameObject</p>
+<p>GameObject.Find(‘helloworld’)</p>
+<p> <strong>访问C#</strong> <strong>成员属性，方法</strong></p>
+<p>读成员属性</p>
+<p>testobj.DMF</p>
+<p>写成员属性</p>
+<p>testobj.DMF &#x3D; 1024</p>
+<p>调用成员方法</p>
+<p>注意：调用成员方法，第一个参数需要传该对象，建议用冒号语法糖，如下</p>
+<p>testobj:DMFunc()</p>
+<p><strong>父类属性，方法</strong></p>
+<p>xlua支持（通过派生类）访问基类的静态属性，静态方法，（通过派生类实例）访问基类的成员属性，成员方法</p>
+<p> <strong>参数的输入输出属性（out</strong>  <strong>，ref</strong> <strong>）</strong></p>
+<p>Lua调用测的参数处理规则：C#的普通参数算一个输入形参，ref修饰的算一个输入形参，out不算，然后从左往右对应lua 调用测的实参列表；</p>
+<p>Lua调用测的返回值处理规则：C#函数的返回值（如果有的话）算一个返回值，out算一个返回值，ref算一个返回值，然后从左往右对应lua的多返回值。</p>
+<p><strong>重载方法</strong></p>
+<p>直接通过不同的参数类型进行重载函数的访问，例如：</p>
+<p>testobj:TestFunc(100)</p>
+<p>testobj:TestFunc(‘hello’)</p>
+<p>将分别访问整数参数的TestFunc和字符串参数的TestFunc。</p>
+<p>注意：xlua只一定程度上支持重载函数的调用，因为lua的类型远远不如C#丰富，存在一对多的情况，比如C#的int，float，double都对应于lua的number，上面的例子中TestFunc如果有这些重载参数，第一行将无法区分开来，只能调用到其中一个（生成代码中排前面的那个）</p>
+<p><strong>操作符</strong></p>
+<p>支持的操作符有：+，-，*，&#x2F;，&#x3D;&#x3D;，一元-，&lt;，&lt;&#x3D;， %，[]</p>
+<p><strong>参数带默认值的方法</strong></p>
+<p>和C#调用有默认值参数的函数一样，如果所给的实参少于形参，则会用默认值补上。</p>
+<p><strong>可变参数方法</strong></p>
+<p>对于C#的如下方法：</p>
+<p>void VariableParamsFunc(int a, paramsstring[] strs)</p>
+<p>可以在lua里头这样调用：</p>
+<p>testobj:VariableParamsFunc(5, ‘hello’, ‘john’)</p>
+<p><strong>使用Extension methods</strong></p>
+<p>在C#里定义了，lua里就能直接使用。</p>
+<p><strong>泛化（模版）方法</strong></p>
+<p>不直接支持，可以通过Extension methods功能进行封装后调用。</p>
+<p><strong>枚举类型</strong></p>
+<p>枚举值就像枚举类型下的静态属性一样。</p>
+<p>testobj:EnumTestFunc(CS.Tutorial.TestEnum.E1)</p>
+<p>上面的EnumTestFunc函数参数是Tutorial.TestEnum类型的</p>
+<p>另外，如果枚举类加入到生成代码的话，枚举类将支持__CastFrom方法，可以实现从一个整数或者字符串到枚举值的转换，例如：</p>
+<p>CS.Tutorial.TestEnum.__CastFrom(1)</p>
+<p>CS.Tutorial.TestEnum.__CastFrom(‘E1’)</p>
+<p><strong>delegate</strong> <strong>使用（调用，+</strong>  <strong>，-</strong> <strong>）</strong></p>
+<p>C#的delegate调用：和调用普通lua函数一样</p>
+<p>+操作符：对应C#的+操作符，把两个调用串成一个调用链，右操作数可以是同类型的C# delegate或者是lua函数。</p>
+<p>-操作符：和+相反，把一个delegate从调用链中移除。</p>
+<p>Ps：delegate属性可以用一个luafunction来赋值。</p>
+<p><strong>event</strong></p>
+<p>比如testobj里头有个事件定义是这样：publiceventAction TestEvent;</p>
+<p>增加事件回调</p>
+<p>testobj:TestEvent(‘+’, lua_event_callback)</p>
+<p>移除事件回调</p>
+<p>testobj:TestEvent(‘-‘, lua_event_callback)</p>
+<p><strong>64****位整数支持</strong></p>
+<p>Lua53版本64位整数（long，ulong）映射到原生的64未整数，而luajit版本，相当于lua5.1的标准，本身不支持64位，xlua做了个64位支持的扩展库，C#的long和ulong都将映射到userdata：</p>
+<p>1、支持在lua里头进行64位的运算，比较，打印</p>
+<p>2、支持和lua number的运算，比较</p>
+<p>3、要注意的是，在64扩展库中，实际上只有int64，ulong也会先强转成long再传递到lua，而对ulong的一些运算，比较，我们采取和java一样的支持方式，提供一组API，详情请看API文档。</p>
+<p> <strong>C#</strong> <strong>复杂类型和table****的自动转换</strong></p>
+<p>对于一个有无参构造函数的C#复杂类型，在lua侧可以直接用一个table来代替，该table对应复杂类型的public字段有相应字段即可，支持函数参数传递，属性赋值等，例如：</p>
+<p>C#下B结构体（class也支持）定义如下：</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs smali">publicstructA&#123;<br>   <span class="hljs-keyword"> public</span>int a;<br>&#125;<span class="hljs-keyword"></span><br><span class="hljs-keyword">public</span>structB&#123;<br>   <span class="hljs-keyword"> public</span>A b;<br>   <span class="hljs-keyword"> public</span>double c;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>某个类有成员函数如下：</p>
+<p>void Foo(B b)</p>
+<p>在lua可以这么调用</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">obj<span class="hljs-function">:Foo</span><span class="hljs-params">(&#123;<span class="hljs-attr">b</span> = &#123;<span class="hljs-attr">a</span> = 100&#125;, <span class="hljs-attr">c</span> = 200&#125;)</span><br></code></pre></td></tr></table></figure>
+
+<p> <strong>获取类型（相当于C#</strong>  <strong>的typeof</strong> <strong>）</strong></p>
+<p>比如要获取UnityEngine.ParticleSystem类的Type信息，可以这样</p>
+<p>typeof(CS.UnityEngine.ParticleSystem)</p>
+<p><strong>“强”转</strong></p>
+<p>lua没类型，所以不会有强类型语言的“强转”，但有个有点像的东西：告诉xlua要用指定的生成代码去调用一个对象，这在什么情况下能用到呢？有的时候第三方库对外暴露的是一个interface或者抽象类，实现类是隐藏的，这样我们无法对实现类进行代码生成。该实现类将会被xlua识别为未生成代码而用反射来访问，如果这个调用是很频繁的话还是很影响性能的，这时我们就可以把这个interface或者抽象类加到生成代码，然后指定用该生成代码来访问：</p>
+<p>cast(calc, typeof(CS.Tutorial.Calc))</p>
+<p>上面就是指定用CS.Tutorial.Calc的生成代码来访问calc对象。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/xlua/" class="print-no-link">#xlua</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>xlua-study</div>
+      <div>http://example.com/2024/05/22/xlua-study/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年5月22日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/05/20/linux/" title="linux">
+                        <span class="hidden-mobile">linux</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
