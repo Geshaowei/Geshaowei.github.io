@@ -16,21 +16,21 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="mysql 相关Ubuntu删除 重装 mysql https:&#x2F;&#x2F;geek-docs.com&#x2F;mysql&#x2F;mysql-ask-answer&#x2F;1625_mysql_ubuntu_mysql_uninstall_reinstall.html 初始密码修改 https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_26164609&#x2F;article&#x2F;details&#x2F;106881079 重启服务 1service">
+    <meta name="description" content="线程的概念 线程的创建线程的终止栈的清理线程的取消选项 线程同步 线程属性线程同步的属性 重入  linux的多线程编程123#include&lt;pthread.h&gt; &#x2F;&#x2F;pthread#include&lt;stdio.h&gt;#include&lt;unistd.h&gt; &#x2F;&#x2F;usleep()  多线程和锁的相关，如果直接make 和gcc会出现未定于pthread相关函数 因">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux">
-<meta property="og:url" content="http://example.com/2024/05/20/linux/index.html">
+<meta property="og:title" content="linux网络编程">
+<meta property="og:url" content="http://example.com/2024/05/24/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="mysql 相关Ubuntu删除 重装 mysql https:&#x2F;&#x2F;geek-docs.com&#x2F;mysql&#x2F;mysql-ask-answer&#x2F;1625_mysql_ubuntu_mysql_uninstall_reinstall.html 初始密码修改 https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_26164609&#x2F;article&#x2F;details&#x2F;106881079 重启服务 1service">
+<meta property="og:description" content="线程的概念 线程的创建线程的终止栈的清理线程的取消选项 线程同步 线程属性线程同步的属性 重入  linux的多线程编程123#include&lt;pthread.h&gt; &#x2F;&#x2F;pthread#include&lt;stdio.h&gt;#include&lt;unistd.h&gt; &#x2F;&#x2F;usleep()  多线程和锁的相关，如果直接make 和gcc会出现未定于pthread相关函数 因">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-05-20T09:07:29.000Z">
-<meta property="article:modified_time" content="2024-05-26T07:30:52.178Z">
+<meta property="article:published_time" content="2024-05-24T04:23:50.000Z">
+<meta property="article:modified_time" content="2024-05-26T03:38:01.505Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>linux - Hexo</title>
+  <title>linux网络编程 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="linux"></span>
+            <span id="subtitle" data-typed-text="linux网络编程"></span>
           
         </div>
 
@@ -207,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-05-20 17:07" pubdate>
-          2024年5月20日 下午
+        <time datetime="2024-05-24 12:23" pubdate>
+          2024年5月24日 中午
         </time>
       </span>
     
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          240 字
+          479 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          3 分钟
+          4 分钟
         
       </span>
     
@@ -267,47 +267,40 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">linux</h1>
+            <h1 id="seo-header">linux网络编程</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="mysql-相关"><a href="#mysql-相关" class="headerlink" title="mysql 相关"></a>mysql 相关</h2><p>Ubuntu删除 重装 mysql</p>
-<p><a target="_blank" rel="noopener" href="https://geek-docs.com/mysql/mysql-ask-answer/1625_mysql_ubuntu_mysql_uninstall_reinstall.html">https://geek-docs.com/mysql/mysql-ask-answer/1625_mysql_ubuntu_mysql_uninstall_reinstall.html</a></p>
-<p>初始密码修改</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_26164609/article/details/106881079">https://blog.csdn.net/qq_26164609/article/details/106881079</a></p>
-<p>重启服务</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">service mysql restart</span><br></code></pre></td></tr></table></figure>
+                <ol>
+<li>线程的概念</li>
+<li>线程的创建<br>线程的终止<br>栈的清理<br>线程的取消选项</li>
+<li>线程同步</li>
+<li>线程属性<br>线程同步的属性</li>
+<li>重入</li>
+</ol>
+<h2 id="linux的多线程编程"><a href="#linux的多线程编程" class="headerlink" title="linux的多线程编程"></a>linux的多线程编程</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;pthread.h&gt;</span> <span class="hljs-comment">//pthread</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;unistd.h&gt;</span> <span class="hljs-comment">//usleep()</span></span><br></code></pre></td></tr></table></figure>
 
-<p>安装C API MYsql：针对找不到mysql.h头文件</p>
-<p>sudo apt-get install libmysqlclient-dev</p>
-<h2 id="文件相关"><a href="#文件相关" class="headerlink" title="文件相关"></a>文件相关</h2><h3 id="删除命令"><a href="#删除命令" class="headerlink" title="删除命令"></a>删除命令</h3><p>1.强制删除文件夹并提示</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">rm</span> -r 文件名<br>1<br></code></pre></td></tr></table></figure>
+<p>多线程和锁的相关，如果直接make 和gcc会出现未定于pthread相关函数 因为没有链接静态库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">gcc thread.c -o thread -lpthread<br></code></pre></td></tr></table></figure>
 
-<p>例如:</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stata">sudo <span class="hljs-keyword">rm</span> -r  /usr/<span class="hljs-keyword">local</span>/<span class="hljs-keyword">include</span>/opencv<br>1<br></code></pre></td></tr></table></figure>
+<h2 id="线程概念"><a href="#线程概念" class="headerlink" title="线程概念"></a>线程概念</h2><p>posix 标准</p>
+<p>pthread_t   类型线程</p>
+<p>pthread_self()   &#x2F;&#x2F;返回pthread_t 类型，相当于 getpid()</p>
+<h3 id="线程的创建"><a href="#线程的创建" class="headerlink" title="线程的创建"></a>线程的创建</h3><p>pthread_create()</p>
+<p>线程的调度取决于调度的策略</p>
+<h3 id="线程的终止"><a href="#线程的终止" class="headerlink" title="线程的终止"></a>线程的终止</h3><p>3种终止方法：</p>
+<ol>
+<li>线程从启动历程返回，返回值就是线程的退出码</li>
+<li>线程可以被同一进程种的其他线程取消</li>
+<li>线程调用pthread_exit()函数</li>
+</ol>
+<p>pthread_join()    —wait() 等待收尸</p>
+<h3 id="栈的清理"><a href="#栈的清理" class="headerlink" title="栈的清理"></a>栈的清理</h3><p>pthread_cleanup_push();</p>
+<p>pthread_cleanup_pop();</p>
+<h3 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a>线程同步</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs scss">pthread_mutex_t;<br><span class="hljs-built_in">pthread_mutex_init</span>();<br><span class="hljs-built_in">pthread_mutex_destory</span>();<br><span class="hljs-built_in">pthread_mutex_lock</span>();<br><span class="hljs-built_in">pthreaD_mutex_trylock</span>();<br><span class="hljs-built_in">pthread_mutex_unlock</span>();<br></code></pre></td></tr></table></figure>
 
-<p>2.强制删除文件夹并不提示</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp">sudo rm -rf 文件名<br><span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
-
-<p>3.删除文件</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">sudo rm -f 文件名<br></code></pre></td></tr></table></figure>
-
-<h3 id="CD操作"><a href="#CD操作" class="headerlink" title="CD操作"></a>CD操作</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs linux">cd ~  回到自己的根目录//通常是home<br>cd / 回到系统根目录<br>cd .. 退回上级目录<br>wsl 中， cd ~ 默认进入 cd / 的 root里面。<br></code></pre></td></tr></table></figure>
-
-<h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><p>复制文件</p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-keyword">cp</span> 目标文件 /目标地址<br></code></pre></td></tr></table></figure>
-
-<h2 id="Go-Linux安装"><a href="#Go-Linux安装" class="headerlink" title="Go-Linux安装"></a>Go-Linux安装</h2><p><a href="">https://studygolang.com/articles/14815?fr=sidebar</a></p>
-<h2 id="MyTinyServer"><a href="#MyTinyServer" class="headerlink" title="MyTinyServer"></a>MyTinyServer</h2><p>项目链接<a target="_blank" rel="noopener" href="https://github.com/qinguoyi/TinyWebServer">MyTinyServer</a></p>
-<p>问题注意：mysql.h注意是否配置成功</p>
-<p>测试环境：WSL下的Ubuntu2004，mysql 8.0。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">make clean //清除make生成文件<br></code></pre></td></tr></table></figure>
-
-<h2 id="线程进程相关"><a href="#线程进程相关" class="headerlink" title="线程进程相关"></a>线程进程相关</h2><p>ps  当前信息</p>
-<p>ps -axf</p>
-<p>ps -axm纤细</p>
-<h2 id="系统操作"><a href="#系统操作" class="headerlink" title="系统操作"></a>系统操作</h2><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs x86asm">nprox ：<span class="hljs-meta">cpu</span>逻辑处理器个数（线程数）<br><span class="hljs-symbol">lscpu:</span>查看<span class="hljs-meta">cpu</span>信息<br><br></code></pre></td></tr></table></figure>
+<h2 id="线程池的数量："><a href="#线程池的数量：" class="headerlink" title="线程池的数量："></a>线程池的数量：</h2><p>在StackOverflow上面发现了一个还不错的<a target="_blank" rel="noopener" href="https://stackoverflow.com/a/16128493/7121726">回答</a>，意思是：<br>线程池中的线程数量最直接的限制因素是中央处理器(CPU)的处理器(processors&#x2F;cores)的数量 <code>N</code>：如果你的CPU是4-cores的，对于CPU密集型的任务(如视频剪辑等消耗CPU计算资源的任务)来说，那线程池中的线程数量最好也设置为4（或者+1防止其他因素造成的线程阻塞）；对于IO密集型的任务，一般要多于CPU的核数，因为线程间竞争的不是CPU的计算资源而是IO，IO的处理一般较慢，多于cores数的线程将为CPU争取更多的任务，不至在线程处理IO的过程造成CPU空闲导致资源浪费，公式：<code>最佳线程数 = CPU当前可使用的Cores数 * 当前CPU的利用率 * (1 + CPU等待时间 / CPU处理时间)</code>（还有回答里面提到的Amdahl准则可以了解一下）</p>
 
                 
               </div>
@@ -325,8 +318,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>linux</div>
-      <div>http://example.com/2024/05/20/linux/</div>
+      <div>linux网络编程</div>
+      <div>http://example.com/2024/05/24/linux网络编程/</div>
     </div>
     <div class="license-meta">
       
@@ -338,7 +331,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年5月20日</div>
+          <div>2024年5月24日</div>
         </div>
       
       
@@ -370,18 +363,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/05/22/xlua-study/" title="xlua-study">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">xlua-study</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/05/15/%E9%9D%A2%E8%AF%95%E7%BB%8F%E9%AA%8C/" title="面试经验">
-                        <span class="hidden-mobile">面试经验</span>
+                      <a href="/2024/05/22/xlua-study/" title="xlua-study">
+                        <span class="hidden-mobile">xlua-study</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
